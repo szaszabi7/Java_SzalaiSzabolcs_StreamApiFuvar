@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     private static List<Fuvar> fuvarLista;
@@ -19,6 +20,7 @@ public class Main {
         feladat4();
         feladat5();
         feladat6(4261);
+        feladat7();
     }
 
     private static void beolvasas(String file) {
@@ -69,6 +71,18 @@ public class Main {
 
     private static void feladat6(int taxiId) {
         double km = fuvarLista.stream().filter(fuvar -> fuvar.getTaxi_id() == taxiId).mapToDouble(Fuvar::getTavolsag).sum() * 1.6;
-        System.out.printf("6. feladat: A %d azonosítójú taxi összesn %.2f km-et tett meg", taxiId, km);
+        System.out.printf("6. feladat: A %d azonosítójú taxi összesn %.2f km-et tett meg\n", taxiId, km);
+    }
+
+    private static void feladat7() {
+        List<Fuvar> hibasFuvarok = fuvarLista.stream().filter((fuvar) -> fuvar.getIdotartam() > 0 && fuvar.getViteldij() > 0 && fuvar.getTavolsag() == 0).toList();
+        long db = hibasFuvarok.stream().count();
+        double idotartam = hibasFuvarok.stream().mapToDouble(Fuvar::getIdotartam).sum();
+        double bevetel = hibasFuvarok.stream().mapToDouble(fuvar -> fuvar.getViteldij() + fuvar.getBorravalo()).sum();
+        System.out.printf("""
+                7. feladat: Híbás fuvarok száma: %d
+                            Hibás fuvarok időtartama: %.2f
+                            Hibás fuvarok bevétele: %.2f
+                """, db, idotartam, bevetel);
     }
 }
