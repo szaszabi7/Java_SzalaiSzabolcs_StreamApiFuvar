@@ -79,7 +79,7 @@ public class Fuvar {
 
     @Override
     public String toString() {
-        return String.format("%-6d: %-22s %-5d %-5f mérföld %-5f$ %-5f$ %-10s",
+        return String.format("ID: %4d, Dátum: %-19s, Időtartam: %4d másodperc, Távolság: %5.2f, mérföld Viteldíj: %5.2f$, Borravaló: %5.2f$, Fizetési mód: %s",
                 this.taxi_id,
                 this.indulas,
                 this.idotartam,

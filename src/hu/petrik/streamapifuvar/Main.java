@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Main {
@@ -15,6 +16,7 @@ public class Main {
         feladat1();
         feladat2(6185);
         feladat3();
+        feladat4();
     }
 
     private static void beolvasas(String file) {
@@ -50,6 +52,10 @@ public class Main {
 
     private static void feladat3() {
         double tavolsag = fuvarLista.stream().mapToDouble(Fuvar::getTavolsag).sum();
-        System.out.printf("3. feladat: Összesen %.2f mérföldet tettek meg a texisok", tavolsag);
+        System.out.printf("3. feladat: Összesen %.2f mérföldet tettek meg a texisok\n", tavolsag);
+    }
+
+    private static void feladat4() {
+        System.out.println("4. feladat: " + fuvarLista.stream().max(Comparator.comparingInt(Fuvar::getIdotartam)).get());
     }
 }
