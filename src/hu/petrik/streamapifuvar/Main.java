@@ -24,6 +24,7 @@ public class Main {
         feladat8(1452);
         feladat9();
         feladat10();
+        feladat11();
     }
 
     private static void beolvasas(String file) {
@@ -106,6 +107,12 @@ public class Main {
     }
 
     private static void feladat10() {
-        System.out.printf("10. feladat: %d db fuvar volt december 24-én", fuvarLista.stream().filter(fuvar -> fuvar.getIndulas().contains("12-24")).count());
+        System.out.printf("10. feladat: %d db fuvar volt december 24-én\n", fuvarLista.stream().filter(fuvar -> fuvar.getIndulas().contains("12-24")).count());
+    }
+
+    private static void feladat11() {
+        double borravalo = fuvarLista.stream().filter(fuvar -> fuvar.getIndulas().contains("12-31")).mapToDouble(Fuvar::getBorravalo).sum();
+        double viteldij = fuvarLista.stream().filter(fuvar -> fuvar.getIndulas().contains("12-31")).mapToDouble(Fuvar::getViteldij).sum();
+        System.out.printf("11. feladat: December 31-én a borravaló arány %.2f%% volt", borravalo / viteldij * 100);
     }
 }
