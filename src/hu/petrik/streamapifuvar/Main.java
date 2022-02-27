@@ -14,6 +14,7 @@ public class Main {
 
         feladat1();
         feladat2(6185);
+        feladat3();
     }
 
     private static void beolvasas(String file) {
@@ -44,6 +45,11 @@ public class Main {
     private static void feladat2(int taxiId) {
         double bevetel = fuvarLista.stream().filter(fuvar -> fuvar.getTaxi_id() == taxiId).mapToDouble(fuvar -> fuvar.getViteldij() + fuvar.getBorravalo()).sum();
         long fuvarok = fuvarLista.stream().filter(fuvar -> fuvar.getTaxi_id() == taxiId).count();
-        System.out.printf("2. feladat: A 6185-ös azonosítójú taxis %d db fuvarból %.2f$ bevételt szerzett", fuvarok, bevetel);
+        System.out.printf("2. feladat: A 6185-ös azonosítójú taxis %d db fuvarból %.2f$ bevételt szerzett\n", fuvarok, bevetel);
+    }
+
+    private static void feladat3() {
+        double tavolsag = fuvarLista.stream().mapToDouble(Fuvar::getTavolsag).sum();
+        System.out.printf("3. feladat: Összesen %.2f mérföldet tettek meg a texisok", tavolsag);
     }
 }
