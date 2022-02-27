@@ -98,7 +98,7 @@ public class Main {
     }
 
     private static void feladat9() {
-        List<Fuvar> legrovidebb3 = fuvarLista.stream().filter(fuvar -> fuvar.getIdotartam() > 0).sorted(Comparator.comparing(Fuvar::getIdotartam).reversed()).limit(3).toList();
+        List<Fuvar> legrovidebb3 = fuvarLista.stream().filter(fuvar -> fuvar.getIdotartam() > 0).sorted(Comparator.comparing(Fuvar::getIdotartam)).limit(3).toList();
         System.out.println("9. feladat: Három leggyorsabb fuvar:");
         for (Fuvar fuvar: legrovidebb3) {
             System.out.println("\t" + fuvar.toString());
