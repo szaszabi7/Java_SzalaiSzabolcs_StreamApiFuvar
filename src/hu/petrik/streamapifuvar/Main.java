@@ -21,6 +21,7 @@ public class Main {
         feladat5();
         feladat6(4261);
         feladat7();
+        feladat8(1452);
     }
 
     private static void beolvasas(String file) {
@@ -84,5 +85,13 @@ public class Main {
                             Hibás fuvarok időtartama: %.2f
                             Hibás fuvarok bevétele: %.2f
                 """, db, idotartam, bevetel);
+    }
+
+    private static void feladat8(int taxiId) {
+        if (fuvarLista.stream().anyMatch((fuvar) -> fuvar.getTaxi_id() == taxiId)) {
+            System.out.printf("8. feladat: A %d azonosítójú taxi szerepel a listában\n", taxiId);
+        } else {
+            System.out.printf("8. feladat: A %d azonosítójú taxi nem szerepel a listában\n", taxiId);
+        }
     }
 }
