@@ -17,6 +17,7 @@ public class Main {
         feladat2(6185);
         feladat3();
         feladat4();
+        feladat5();
     }
 
     private static void beolvasas(String file) {
@@ -57,5 +58,11 @@ public class Main {
 
     private static void feladat4() {
         System.out.println("4. feladat: " + fuvarLista.stream().max(Comparator.comparingInt(Fuvar::getIdotartam)).get());
+    }
+
+    private static void feladat5() {
+        System.out.println("5. feladat: " + fuvarLista.stream()
+                .max((fuvar1, fuvar2) -> (int) (fuvar1.getBorravalo() / fuvar1.getViteldij()
+                        - fuvar2.getBorravalo() / fuvar2.getViteldij())).get());
     }
 }
