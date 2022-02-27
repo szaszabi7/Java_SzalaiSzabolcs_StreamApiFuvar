@@ -23,6 +23,7 @@ public class Main {
         feladat7();
         feladat8(1452);
         feladat9();
+        feladat10();
     }
 
     private static void beolvasas(String file) {
@@ -102,5 +103,9 @@ public class Main {
         for (Fuvar fuvar: legrovidebb3) {
             System.out.println("\t" + fuvar.toString());
         }
+    }
+
+    private static void feladat10() {
+        System.out.printf("10. feladat: %d db fuvar volt december 24-én", fuvarLista.stream().filter(fuvar -> fuvar.getIndulas().contains("12-24")).count());
     }
 }
